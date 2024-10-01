@@ -12,7 +12,7 @@ jobs:
       with:
         node-version: '18'
     
-    - name: Install dependencies
+    - name: install package.json
       run: npm install
     
     - name: Run Test1
@@ -24,3 +24,4 @@ jobs:
           echo "Error $exit_code"
           exit 1
         fi
+
