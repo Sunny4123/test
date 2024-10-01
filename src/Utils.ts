@@ -9,4 +9,4 @@ async function addUser(data:any){
     console.log(response.data);
     return response.data;
 }
-export const Utils = { addUser }
+export const Utils = { addUser,add }

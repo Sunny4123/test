@@ -24,4 +24,4 @@ function addUser(data) {
         return response.data;
     });
 }
-exports.Utils = { addUser };
+exports.Utils = { addUser, add };
