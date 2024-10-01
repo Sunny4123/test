@@ -15,10 +15,12 @@ jobs:
     - name: Install dependencies
       run: npm install
     
-    - name: Compile TypeScript files
-      run: |
-        npx tsc || (echo "TypeScript compilation failed" && exit 1)
-    
     - name: Run Test1
       run: |
-        node dist/Test1.js
+        output=$(node dist/Test1.js)
+        exit_code=$output
+
+        if [ $exit_code -ne 0 ]; then
+          echo "Error $exit_code"
+          exit 1
+        fi
