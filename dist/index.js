@@ -17,19 +17,18 @@ const Utils_1 = require("./Utils");
 const app = (0, express_1.default)();
 const port = 3000;
 app.get('/', (req, res) => {
-    res.send("hello Sunny2");
+    res.send("hello pop");
 });
 app.get('/addUser', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const data = {
-        title: "foo",
-        body: "bar",
-        UserId: 1
+        "name": "pop",
+        "username": "iampop"
     };
-    const result = yield Utils_1.Utils.addUser(data);
+    const result = yield Utils_1.Utils.addUser(data); //3 party jsonplaceholder
+    console.log(result);
     res.send(result);
-    // Utils.addUser(data)
-    // res.send('add User');
 }));
 app.listen(port, () => {
-    console.log('sever is ' + port);
+    console.log('server is ' + port);
 });
+//web brow localhost:3000?userid=1 <---res          (ts)myserver (addUser) <--res-- (3 party) jsonplace... users
