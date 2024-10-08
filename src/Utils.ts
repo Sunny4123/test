@@ -4,7 +4,7 @@ function add(a:number,b:number){
     return a+b;
 }
 function calculate(a: number, b: number, operator: '+' | '-' | '*' | '/'): number | null {
-    switch (operator) {
+    switch (operator) { 
         case '+':
             return a + b;
         case '-':
