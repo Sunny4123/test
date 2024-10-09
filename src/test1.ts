@@ -2,9 +2,9 @@ import { Utils } from "./Utils";
 
 if(Utils.add(1,2) === 6)
 {
-    console.log('Test passed: 1 + 1 = 2'); // Success message
+    console.log(0); // Success message
 }else{
-    console.log('Test failed: 1 + 1); // Failure message');
+    console.log(1);
 }
 
 // test.js
