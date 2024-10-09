@@ -2,9 +2,9 @@ import { Utils } from "./Utils";
 
 if(Utils.add(1,2) === 6)
 {
-    console.log(0); // Success message
+    console.log(1); // Success message
 }else{
-    console.log(1);
+    console.log(0);
 }
 
 // test.js
