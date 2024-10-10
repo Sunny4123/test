@@ -14,10 +14,30 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const Utils_1 = require("./Utils");
+const cors_1 = __importDefault(require("cors"));
+const UserRoutes_1 = __importDefault(require("./UserRoutes"));
 const app = (0, express_1.default)();
 const port = 3000;
+const fs_1 = __importDefault(require("fs"));
+const path_1 = __importDefault(require("path"));
+const mongoose_1 = __importDefault(require("mongoose"));
+const data = fs_1.default.readFileSync(path_1.default.join(__dirname, 'config.json'), { encoding: 'utf-8', flag: 'r' });
+const config = JSON.parse(data);
+const mongoUrl = config.connection;
+app.use(express_1.default.static(path_1.default.join(__dirname, 'public')));
+app.use(express_1.default.json());
+app.use((0, cors_1.default)());
+app.use('/api', UserRoutes_1.default);
 app.get('/', (req, res) => {
     res.send("hello pop");
+});
+mongoose_1.default.connect(mongoUrl).then(() => {
+    console.log("Connection to Mongo Atlas");
+    app.listen(3000, () => {
+        console.log("server start at port 3000");
+    });
+}).catch(err => {
+    console.log('error connect to mongo atles');
 });
 app.get('/addUser', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const data = {
@@ -28,7 +48,7 @@ app.get('/addUser', (req, res) => __awaiter(void 0, void 0, void 0, function* ()
     console.log(result);
     res.send(result);
 }));
-app.listen(port, () => {
-    console.log('server is ' + port);
-});
+// app.listen(port, ()=>{
+//     console.log('server is '+port);
+// })
 //web brow localhost:3000?userid=1 <---res          (ts)myserver (addUser) <--res-- (3 party) jsonplace... users
